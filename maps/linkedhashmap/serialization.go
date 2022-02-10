@@ -9,6 +9,7 @@ import (
 	"encoding/json"
 
 	"github.com/HaHadaxigua/goroxy/utils"
+	yamlUtil "github.com/ghodss/yaml"
 )
 
 // ToJSON outputs the JSON representation of map.
@@ -94,5 +95,28 @@ func (m *Map[K, V]) FromJSON(data []byte) error {
 		m.Put(key, elements[key])
 	}
 
+	return nil
+}
+
+// -----------------------------------------------------------------------------
+
+func (m *Map[K, V]) ToYaml() ([]byte, error) {
+	buf, err := m.ToJSON()
+	if err != nil {
+		return nil, err
+	}
+
+	return yamlUtil.JSONToYAML(buf)
+}
+
+func (m *Map[K, V]) FromYaml(data []byte) error {
+	jsonData, err := yamlUtil.YAMLToJSON(data) // convert yaml to json
+	if err != nil {
+		return err
+	}
+
+	if err = m.FromJSON(jsonData); err != nil {
+		return err
+	}
 	return nil
 }

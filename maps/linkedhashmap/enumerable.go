@@ -4,6 +4,8 @@
 
 package linkedhashmap
 
+import "errors"
+
 // Each calls the given function once for each element, passing that element's key and value.
 func (m *Map[K, V]) Each(f func(key K, value V)) {
 	iterator := m.Iterator()
@@ -75,4 +77,19 @@ func (m *Map[K, V]) Find(f func(key K, value V) bool) (K, V) {
 		v V
 	)
 	return k, v
+}
+
+// -----------------------------------------------------------------------------
+
+func (m *Map[K, V]) AdvancedEach(f func(key K, value V) error) error {
+	iterator := m.Iterator()
+	for iterator.Next() {
+		if err := f(iterator.Key(), iterator.Value()); err != nil {
+			if errors.Is(err, Skip) {
+				continue
+			}
+			return err
+		}
+	}
+	return nil
 }
