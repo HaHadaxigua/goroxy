@@ -1,6 +1,6 @@
 package maps
 
-import "roxy/containers"
+import "github.com/HaHadaxigua/goroxy/containers"
 
 // Map interface that all maps implement
 type Map interface {

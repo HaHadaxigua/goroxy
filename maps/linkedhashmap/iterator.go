@@ -1,6 +1,6 @@
 package linkedhashmap
 
-import "roxy/lists/doublylinkedlist"
+import "github.com/HaHadaxigua/goroxy/lists/doublylinkedlist"
 
 // Iterator holding the iterator's state
 type Iterator[K comparable, V any] struct {

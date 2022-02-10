@@ -7,7 +7,8 @@ package linkedhashmap
 import (
 	"bytes"
 	"encoding/json"
-	"roxy/utils"
+
+	"github.com/HaHadaxigua/goroxy/utils"
 )
 
 // ToJSON outputs the JSON representation of map.

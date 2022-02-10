@@ -2,8 +2,9 @@ package doublylinkedlist
 
 import (
 	"fmt"
-	"roxy/utils"
 	"strings"
+
+	"github.com/HaHadaxigua/goroxy/utils"
 )
 
 // List holds the elements, where each element points to the next and previous element

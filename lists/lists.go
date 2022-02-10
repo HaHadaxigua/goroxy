@@ -1,7 +1,7 @@
 package lists
 
 import (
-	"roxy/utils"
+	"github.com/HaHadaxigua/goroxy/utils"
 )
 
 // List interface that all lists implement

@@ -2,8 +2,9 @@ package linkedhashmap
 
 import (
 	"fmt"
-	"roxy/lists/doublylinkedlist"
 	"strings"
+
+	"github.com/HaHadaxigua/goroxy/lists/doublylinkedlist"
 )
 
 // Map holds the elements in a red-black tree

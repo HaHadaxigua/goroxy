@@ -2,8 +2,9 @@ package doublylinkedlist
 
 import (
 	"fmt"
-	"roxy/utils"
 	"testing"
+
+	"github.com/HaHadaxigua/goroxy/utils"
 )
 
 func TestListNew(t *testing.T) {
