@@ -1,3 +1,3 @@
-module github.com/HaHadaxigua/goproxy
+module github.com/HaHadaxigua/goroxy
 
 go 1.18
