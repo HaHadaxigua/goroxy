@@ -7,6 +7,7 @@ package glinkedmap
 import (
 	"bytes"
 	"encoding/json"
+	"gopkg.in/yaml.v3"
 
 	"github.com/HaHadaxigua/goroxy/utils"
 	yamlUtil "github.com/ghodss/yaml"
@@ -119,4 +120,18 @@ func (m *Map[K, V]) FromYaml(data []byte) error {
 		return err
 	}
 	return nil
+}
+
+func (m *Map[K, V]) ToYamlNode() (*yaml.Node, error) {
+	var node yaml.Node
+	buf, err := m.ToYaml()
+	if err != nil {
+		return nil, err
+	}
+
+	if err := yaml.Unmarshal(buf, &node); err != nil {
+		return nil, err
+	}
+
+	return &node, nil
 }
