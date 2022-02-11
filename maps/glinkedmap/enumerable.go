@@ -93,3 +93,19 @@ func (m *Map[K, V]) AdvancedEach(f func(key K, value V) error) error {
 	}
 	return nil
 }
+
+func (m *Map[K, V]) AdvancedMap(f func(key K, value V) (K, V, error)) (*Map[K, V], error) {
+	newMap := New[K, V]()
+	iterator := m.Iterator()
+	for iterator.Next() {
+		key2, value2, err := f(iterator.Key(), iterator.Value())
+		if err != nil {
+			if errors.Is(err, Skip) {
+				continue
+			}
+			return nil, err
+		}
+		newMap.Put(key2, value2)
+	}
+	return newMap, nil
+}
