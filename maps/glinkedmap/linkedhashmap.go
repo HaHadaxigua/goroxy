@@ -1,4 +1,4 @@
-package linkedhashmap
+package glinkedmap
 
 import (
 	"fmt"
