@@ -52,19 +52,6 @@ func (m *Map[K, V]) ToJSON() ([]byte, error) {
 }
 
 // FromJSON populates map from the input JSON representation.
-//func (m *Map) FromJSON(data []byte) error {
-//	elements := make(map[string]interface{})
-//	err := json.Unmarshal(data, &elements)
-//	if err == nil {
-//		m.Clear()
-//		for key, value := range elements {
-//			m.Put(key, value)
-//		}
-//	}
-//	return err
-//}
-
-// FromJSON populates map from the input JSON representation.
 func (m *Map[K, V]) FromJSON(data []byte) error {
 	elements := make(map[K]V)
 	err := json.Unmarshal(data, &elements)
